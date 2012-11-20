@@ -2,7 +2,7 @@
 
 # Domain2IPs_pDNS.py
 # Author: Keith Gilbert - www.digital4rensics.com - @digital4rensics
-# Version: 1.0
+# Version: 1.1
 # Date: November, 2012
 
 # This script will retrieve IPs associated with a given domain
@@ -14,7 +14,7 @@ from MaltegoTransform import *
 import sys
 import subprocess
 
-badDomain = sys.argv[1]
+badDomain = sys.argv[1] + "/A"
 xform = MaltegoTransform()
 
 out = subprocess.Popen(["/bin/bash", "isc-dnsdb-query.sh", "rrset", badDomain], shell=False, stdout=subprocess.PIPE)
@@ -29,6 +29,9 @@ for line in entries:
 			pass
 		else:
 			IP = line.split()[3]
-			entity = xform.addEntity("maltego.IPv4Address", IP)
+			if IP == "127.0.0.1":
+				pass
+			else:
+				entity = xform.addEntity("maltego.IPv4Address", IP)
 	
 xform.returnOutput()

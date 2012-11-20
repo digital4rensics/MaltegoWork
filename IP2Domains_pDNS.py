@@ -2,7 +2,7 @@
 
 # IP2Domains_pDNS.py
 # Author: Keith Gilbert - www.digital4rensics.com - @digital4rensics
-# Version: 1.0
+# Version: 1.1
 # Date: November, 2012
 
 # This script will retrieve domains associated with a given IP
@@ -22,10 +22,10 @@ results, err = out.communicate()
 
 entries = results.splitlines()
 for line in entries:
-	if len(line) == 0:
+	domain = line.split()[0].rstrip('.;')
+	if len(domain) == 0:
 		pass
 	else:
-		domain = line.split()[0].rstrip('.;')
 		entity = xform.addEntity("maltego.Domain", domain)
 	
 xform.returnOutput()
