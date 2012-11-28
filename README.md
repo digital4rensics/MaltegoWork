@@ -8,8 +8,10 @@ Both Passive DNS scripts require a copy of the ISC provided script (available at
   * Domain2IPs_pDNS.py - This transform takes a domain and uses the ISC PassiveDNS service to identify known                 associated IP addresses.
   * IP2Domains_pDNS.py - This transform takes an IP address and uses the ISC PassiveDNS service to identify known associated domains.
 
-  * malwr_hash2ip.py - This transform takes an MD5 hash and searches Malwr.com for a report and returns IP addresses from the report.
-  
+The Following scripts require BeautifulSoup 3 and Mechanize Python libraries.
+  * malwr_hash2ip.py - This transform takes an MD5 hash and searches Malwr.com for a report. If one is found, it returns IP addresses from the report.
+  * threatexpert_hash2ip.py - This transform takes an MD5 hash and searches ThreatExpert.com for a report. If one is found, it returns IP addresses from the report.
+
 All feedback, bug reports, enhancements, etc. are greatly appreciated.
 
 
