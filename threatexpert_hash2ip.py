@@ -29,9 +29,12 @@ def getreport(hash):
 def parsereport(page):
 	xform = MaltegoTransform()
 	
-	for element in page.findAll(text=re.compile("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")):
-		entity = xform.addEntity("maltego.IPv4Address", element)
-		
+	try:
+		for element in page.findAll(text=re.compile("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")):
+			entity = xform.addEntity("maltego.IPv4Address", element)
+	except:
+		sys.exit("Report contains no IPs.")
+			
 	xform.returnOutput()
 
 def main():
