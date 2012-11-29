@@ -37,10 +37,10 @@ def parsereport(page):
 			entity = xform.addEntity("maltego.IPv4Address", single)
 			if multiple:
 				for mutex in multiple.findAll('li'):
-					entity = xform.addEntity("maltego.IPv4Address", mutex.text)
+					entity = xform.addEntity("maltego.Phrase", mutex.text)
 		elif multiple:
 			for mutex in multiple.findAll('li'):
-					entity = xform.addEntity("maltego.IPv4Address", mutex.text)
+					entity = xform.addEntity("maltego.Phrase", mutex.text)
 		else:
 			sys.exit("No Mutexes Reported")
 	
