@@ -11,6 +11,7 @@ Both Passive DNS scripts require a copy of the ISC provided script (available at
 The Following scripts require BeautifulSoup 3 and Mechanize Python libraries.
   * malwr_hash2ip.py - This transform takes an MD5 hash and searches Malwr.com for a report. If one is found, it returns IP addresses from the report.
   * threatexpert_hash2ip.py - This transform takes an MD5 hash and searches ThreatExpert.com for a report. If one is found, it returns IP addresses from the report.
+  * threatexpert_hash2mutex.py - Takes an MD5 hash and searches ThreatExpert.com for a report. If one is found, it returns all mutexes in the report.
 
 All feedback, bug reports, enhancements, etc. are greatly appreciated.
 
