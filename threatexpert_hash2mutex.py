@@ -10,7 +10,6 @@
 
 import sys
 import mechanize
-import re
 from MaltegoTransform import *
 from BeautifulSoup import BeautifulSoup
 
@@ -30,15 +29,21 @@ def parsereport(page):
 	xform = MaltegoTransform()
 	
 	try:
-		single = page.find(text='To mark the presence in the system, the following Mutex object was created:').findNext('ul').li.text
-		multiple = page.find(text='To mark the presence in the system, the following Mutex objects were created:').findNext('ul')
+		try:
+			single = page.find(text='To mark the presence in the system, the following Mutex object was created:').findNext('ul').li.text
+		except:
+			single = None	
+		try:
+			multiple = page.find(text='To mark the presence in the system, the following Mutex objects were created:').findNext('ul')
+		except:
+			multiple = None	
 				
-		if single:
+		if single is not None:
 			entity = xform.addEntity("maltego.IPv4Address", single)
-			if multiple:
+			if multiple is not None:
 				for mutex in multiple.findAll('li'):
 					entity = xform.addEntity("maltego.Phrase", mutex.text)
-		elif multiple:
+		elif multiple is not None:
 			for mutex in multiple.findAll('li'):
 					entity = xform.addEntity("maltego.Phrase", mutex.text)
 		else:
