@@ -29,7 +29,7 @@ for line in entries:
 			pass
 		else:
 			IP = line.split()[3]
-			if IP == "127.0.0.1":
+			if IP == "127.0.0.1" or IP == "0.0.0.0":
 				pass
 			else:
 				entity = xform.addEntity("maltego.IPv4Address", IP)
