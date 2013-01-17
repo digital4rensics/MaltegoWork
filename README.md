@@ -1,3 +1,5 @@
+<<< Deprecated in favor of Malformity >>>
+
 MaltegoWork
 ===========
 
