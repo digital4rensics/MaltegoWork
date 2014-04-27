@@ -7,7 +7,7 @@
 
 # This script will retrieve domains associated with a given IP
 # from the ISC pDNS service. Domains will be added as entities to the graph.
-# The script requires copying the ISC provided script from ftp://ftp.isc.org/isc/nmsg/misc/isc-dnsdb-query
+# The script requires copying the ISC provided script from https://www.farsightsecurity.com/Services/DNSDB/
 # and specifying your api key in the isc-dnsdb-query.conf file.
 
 from MaltegoTransform import *
